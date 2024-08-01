@@ -37,10 +37,12 @@ const RaceResults = ({ data }) => {
             <table className="results-table">
               <thead>
                 <tr>
+
+                  <th>順位</th>
                   <th>ゼッケン番号</th>
                   <th>選手名</th>
                   <th>所属チーム</th>
-                  <th>順位</th>
+                  
                 </tr>
               </thead>
               <tbody>
@@ -48,10 +50,11 @@ const RaceResults = ({ data }) => {
                   .sort((a, b) => a['順位入力'] - b['順位入力'])
                   .map((row, index) => (
                     <tr key={index}>
+                      <td>{row['順位入力']}</td>
                       <td>{row['ゼッケン番号']}</td>
                       <td>{row['選手名']}</td>
                       <td>{row['所属チーム']}</td>
-                      <td>{row['順位入力']}</td>
+                      
                     </tr>
                   ))}
               </tbody>

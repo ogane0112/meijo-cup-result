@@ -2,7 +2,7 @@
 /* styles/globals.css */
 @font-face {
   font-family: 'MyFont';
-  src: url('./mushin.otf') format('woff2');
+  src: url('./mushin.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -11,7 +11,7 @@ body {
   font-family: 'MyFont', sans-serif;
 }
 .race-results {
-  font-family: 'Kosugi Maru', sans-serif;
+  
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -31,7 +31,7 @@ body {
   margin-bottom: 20px;
 }
 .race-select {
-  font-family: 'Kosugi Maru', sans-serif;
+  
   font-size: 1em;
   padding: 10px;
   border-radius: 5px;
@@ -48,8 +48,8 @@ body {
   color: #ffffff;
   padding: 15px;
   margin: 0;
-  -webkit-text-stroke:0.5px #000;/*  これで縁取りしている */
-  font-size: 1.5em;
+  font-weight:bold;
+  font-size: 1.7em;
   border-bottom: 2px solid #ff9ab3;
   text-shadow: 2px 2px 4px rgba(249, 106, 142, 0.6);
 }
@@ -63,7 +63,7 @@ body {
 .results-table th,
 .results-table td {
   padding: 12px 15px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #ffe4e8;
 }
 .results-table th {
@@ -129,7 +129,7 @@ body {
 /* その他の小さなスクリーン対応 */
 @media (max-width: 480px) {
   .race-results {
-    font-size: 0.8em;
+    font-size: 0.7em;
     padding: 12px;
   }
   .main-title {
