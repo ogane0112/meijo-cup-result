@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link'
 
-const RaceResults = ({ data }) => {
+const RaceCombine = ({ data }) => {
 
   const [selectedRace, setSelectedRace] = useState('all');
 
@@ -10,19 +10,13 @@ const RaceResults = ({ data }) => {
 
   const raceName = curr['出場レース'];
 
-  const checkRaceName = ["2歳予備予選"];
-
-  if (!acc[raceName] & checkRaceName.includes(raceName)) {
+  if (!acc[raceName]) {
 
     acc[raceName] = [];
 
-    }else if (checkRaceName.includes(raceName)){
-
-      acc[raceName].push(curr);
-
     }
 
-    
+    acc[raceName].push(curr);
 
     return acc;
 
@@ -40,11 +34,13 @@ const RaceResults = ({ data }) => {
 
   return (
     <div className="race-results">
-      <h1 className="main-title">レース結果表</h1>
+      <h1 className="main-title">レース組み合わせ表</h1>
       <div className="select-container">
+        
         <span className='race-select'>
           <Link href="https://meijocup-website.vercel.app/" >ウェブサイトへ戻る</Link>
         </span>
+
         <select onChange={handleRaceChange} value={selectedRace} className="race-select">
           <option value="all">全てのレース</option>
           {/*レース名の数だけ処理する*/}
@@ -52,9 +48,9 @@ const RaceResults = ({ data }) => {
             <option key={raceName} value={raceName}>{raceName}</option>
           ))}
         </select>
-        
+
         <span className='race-select'>
-          <Link href="/" >組み合わせ確認表へ移動</Link>
+          <Link href="/result" >レース結果表へ移動</Link>
         </span>
       </div>
       {/* レース名の数だけ処理する */}
@@ -67,7 +63,6 @@ const RaceResults = ({ data }) => {
               <thead>
                 <tr>
 
-                  <th>順位</th>
                   <th>ゼッケン番号</th>
                   <th>選手名</th>
                   <th>所属チーム</th>
@@ -80,12 +75,9 @@ const RaceResults = ({ data }) => {
                   .sort((a, b) => a['順位入力'] - b['順位入力'])
                   .map((row, index) => (
                     <tr key={index}>
-
-                      <td>{row['順位入力']}</td>
                       <td>{row['ゼッケン番号']}</td>
                       <td>{row['選手名']}</td>
-                      <td>{row['所属チーム']}</td>
-                      
+                      <td>{row['所属チーム']}</td>     
                     </tr>
                   ))}
               </tbody>
@@ -97,4 +89,4 @@ const RaceResults = ({ data }) => {
   );
 };
 
-export default RaceResults;
+export default RaceCombine;
