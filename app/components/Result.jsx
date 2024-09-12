@@ -7,25 +7,12 @@ const RaceResults = ({ data }) => {
   const [selectedRace, setSelectedRace] = useState('all');
 
   const groupedData = data.reduce((acc, curr) => {
-
-  const raceName = curr['出場レース'];
-
-  const checkRaceName = ["2歳予備予選"];
-
-  if (!acc[raceName] & checkRaceName.includes(raceName)) {
-
-    acc[raceName] = [];
-
-    }else if (checkRaceName.includes(raceName)){
-
-      acc[raceName].push(curr);
-
+    const raceName = curr['出場レース'];
+    if (!acc[raceName]) {
+      acc[raceName] = [];
     }
-
-    
-
+    acc[raceName].push(curr);
     return acc;
-
   }, {});
   
   console.log(groupedData)
